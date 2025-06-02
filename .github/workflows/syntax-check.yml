@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print all environment variables
-        run: echo ${{ env.GITHUB_WORKSPACE}}
+        run: env
   # build:
 
   #   runs-on: ubuntu-latest

@@ -2,21 +2,21 @@ name: Python application
 
 on: [push]
 
+env:
+  FILE_NAME: my-artifact.txt
+
 jobs:
   print-env:
     runs-on: ubuntu-latest
     steps:
-      - name: Print all environment variables
-        run: env
-  # build:
+    - name: Check out the code 
+      uses: actions/checkout@v2
 
-  #   runs-on: ubuntu-latest
+    - name : create file
+      uses : run echo "this is a sample file" > sample.txt
 
-  #   steps:
-  #   - name: Check out the code
-  #     uses: actions/checkout@v2
-  #   - name: Python Syntax Checker
-  # # You may pin to the exact commit or the version.
-  # # uses: cclauss/Find-Python-syntax-errors-action@90f67be9fb626b675a3971b1d08ab29851cb721f
-  #     uses: cclauss/Find-Python-syntax-errors-action@v0.2.0
-          
+    - name : save artifact
+      uses: actions/upload-artifact@v4
+      with :
+          path: ./sample.txt
+
